@@ -1,0 +1,283 @@
+$primaryColor: #296DFF;
+$dark: #181818;
+$white: #fff;
+$lightFont: #333;
+$darkFont: rgba(255,255,255,.8);
+
+.belle_ui-permission_nav {
+    border: 0;
+    .el-icon:nth-child(1) {
+        width: 12px;
+        margin: 0 6px 0 12px;
+    }
+    &-sub {
+        :deep(.el-menu) {
+            width: 100%;
+        }
+        .el-sub-menu__icon-arrow:nth-child(1) {
+            right: 0;
+        }
+    }
+    &-third {
+        :deep(.el-menu-item) {
+            padding-left: 52px!important;
+        }
+        :deep(.el-sub-menu__title) {
+            padding-left: 40px!important;
+        }
+    }
+}
+.el-menu-item,
+.belle_ui-permission_nav > li{
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    padding: 0!important;
+    margin-top: 4px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    line-height: 38px;
+    font-size: 12px;
+}
+.el-menu-item {
+    &.belle_ui-permission_nav-sub-item{
+        padding-left: 40px!important;
+    }
+}
+.el-menu .el-menu-item:nth-child(1) {
+    margin-top: 0;
+}
+:deep(.el-sub-menu__title) {
+    width: 100%;
+    padding: 0;
+    padding-left: 0!important;
+    height: 38px;
+    font-size: 12px;
+    line-height: 38px;
+    .el-sub-menu__icon-arrow {
+        width: 12px;
+    }
+}
+
+// 白色主题
+.light{
+    @mixin lightHover {
+        background: $white;
+        color: $primaryColor;
+    }
+    &.el-menu-item {
+        color: $lightFont;
+        &.is-active {
+            &, &:hover {
+                color: $primaryColor;
+                background: rgba(194, 221, 255, 0.8);
+            }
+        }
+        &:hover{
+            @include lightHover;
+        }
+    }
+    &.is-active {
+        > :deep(.el-sub-menu__title){ 
+            color: $primaryColor;
+        }
+    }
+    :deep(.el-sub-menu__title){
+        color: $lightFont;
+        &:hover {
+            @include lightHover;
+        }
+    }
+    &.is-opened {
+        // :deep(.el-sub-menu__title), :deep(.el-menu){
+        //     background: rgba(255,255,255,.09)!important;
+        // }
+        .el-menu-item:not(.is-active){
+            &:hover {
+                background: transparent
+            }
+        }
+        &.belle_ui-permission_nav-sub {
+            >:deep(.el-sub-menu__title) {
+                background: $white!important;
+            }
+            >:deep(.el-menu) {
+                background: #F6F8FB!important;
+            }
+        }
+        :deep(.el-sub-menu__title), :deep(.el-menu) {
+            background: transparent!important;
+        }
+    }
+}
+
+// 黑暗主题
+.dark {
+    @mixin darkHover {
+        background: $dark;
+        color: $white;
+    }
+    &.el-menu-item {
+        color: $darkFont;
+        &.is-active {
+            &, &:hover{
+                background: $primaryColor;
+                color: $white;
+            }
+        }
+        &:hover {
+            @include darkHover;
+        }
+    }
+    &.is-active {
+        :deep(.el-sub-menu__title){ 
+            color: $white;
+        }
+    }
+    :deep(.el-sub-menu__title) {
+        color: $darkFont;
+        &:hover {
+            @include darkHover;
+        }
+    }
+    &.is-opened {
+        // :deep(.el-sub-menu__title), :deep(.el-menu){
+        //     background: rgba(255,255,255,.09)!important;
+        // }
+        .el-menu-item:not(.is-active){
+            &:hover {
+                background: transparent
+            }
+        }
+        &.belle_ui-permission_nav-sub {
+            >:deep(.el-sub-menu__title) {
+                background: $dark!important;
+            }
+            >:deep(.el-menu) {
+                background: rgba(255,255,255,.09)!important;
+            }
+        }
+        :deep(.el-sub-menu__title), :deep(.el-menu:not(&.el-menu--popup)) {
+            background: transparent!important;
+        }
+    }
+}
+
+// 自定义主题
+.diy {
+    @mixin diyHover {
+        background: var(--permission-theme);
+        color: $white;
+    }
+    &.el-menu-item {
+        color: $darkFont;
+        &.is-active {
+            &, &:hover{
+                background: $white;
+                color: $primaryColor;
+            }
+        }
+        &:hover {
+            @include diyHover;
+        }
+    }
+    &.is-active {
+        :deep(.el-sub-menu__title){ 
+            color: $white;
+        }
+    }
+    :deep(.el-sub-menu__title) {
+        color: $darkFont;
+        &:hover {
+            @include diyHover;
+        }
+    }
+    &.is-opened {
+        :deep(.el-sub-menu__title), :deep(.el-menu:not(&.el-menu--popup)) {
+            background: transparent!important;
+        }
+        .el-menu-item:not(.is-active){
+            &:hover {
+                background: transparent
+            }
+        }
+        &.belle_ui-permission_nav-sub {
+            >:deep(.el-sub-menu__title){
+                background: var(--permission-theme)!important;
+            }
+        }
+    }
+}
+
+
+
+// 菜单收起
+.belle_ui-permission_nav.permissionMenuCollapse {
+    width: 100%;
+    &>li{
+        height: 48px;
+        padding: 0 10px!important;
+        margin-bottom: 14px;
+        justify-content: center;
+        &>span{
+            display: block;
+            height: 20px;
+            width: 100%;
+            visibility: visible;
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 20px;
+            font-size: 12px;
+            white-space: pre-line;
+            word-break: break-all;
+        }
+    }
+    .belle_ui-permission_nav {
+        &-sub {
+            :deep(.el-sub-menu__title) {
+                flex-wrap: wrap;
+                justify-content: center;
+                height: 100%;
+                &>span{
+                    display: block;
+                    height: 20px;
+                    width: 100%;
+                    visibility: visible;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    line-height: 20px;
+                    font-size: 12px;
+                    white-space: pre-line;
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+    .el-icon:nth-child(1) {
+        margin: 0;
+        width: 18px;
+        font-size: 18px!important;
+    }
+}
+
+//-----------------子菜单popper ----------------------------//
+:global([class*=permission-menu-sub-popper-]) {
+    border: 0!important;
+    left: 74px!important;
+}
+:global([class*=permission-menu-sub-popper-] .el-menu--popup) {
+    padding: 0;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: rgb(136 144 155 / 14%) 0px 0px 20px;;
+}
+:global([class*=permission-menu-sub-popper-] .el-menu--popup::before) {
+    position: absolute;
+    left: -14px;
+    top: 13px;
+    display: block;
+    content: '';
+    border: 7px solid transparent;
+    border-right-color: var(--el-menu-bg-color);
+}

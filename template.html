@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="shortcut icon" href="//baidu.com/cas/resources/images/icon.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <% for(i in htmlWebpackPlugin.files.css) { %>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[i] %>" />
+    <% } %>
+</head>
+
+<body>
+    <div id="mainapp"></div>
+    <% for(i in htmlWebpackPlugin.files.js) { %>
+    <script src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
+    <% } %>
+</body>
+
+</html>
